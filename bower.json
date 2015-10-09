@@ -1,0 +1,20 @@
+{
+  "name": "gcmd",
+  "version": "0.0.0",
+  "homepage": "https://github.com/arcticlcc/gcmd",
+  "authors": [
+    "Josh Bradley <jbradley@arcticlcc.org>"
+  ],
+  "description": "Easily select GCMD Science Keywords",
+  "main": "gcmd.js",
+  "moduleType": [],
+  "license": "Unlicense",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
