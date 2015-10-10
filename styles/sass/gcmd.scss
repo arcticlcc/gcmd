@@ -1,0 +1,74 @@
+@import 'loader';
+
+$icon-font-path: "../assets/fonts/bootstrap/" !default;
+$brand-primary: adjust_hue(darken(#428bca, 6), 253) !default;
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/theme";
+//@import 'logo';
+
+body {
+  padding-top: 50px;
+}
+
+#about {
+  margin-top: 2em;
+}
+
+#tree-tabs {
+  margin-bottom: 1.5em;
+}
+
+#tree {
+
+  .list-group-item:first-child {
+    border-top: 0;
+  }
+
+  span.icon.expand-icon:hover {
+    color: darken(saturate($brand-warning, 4), 2);
+  }
+}
+
+#panel-search {
+  border-top: 0;
+  padding: 1em;
+
+  .form-group {
+    padding-right: 1em;
+    margin-bottom: 15px;
+  }
+
+  .chk-grp {
+    width: 10em;
+
+    .checkbox {
+      margin-right: 1em;
+    }
+  }
+
+  .search-grp {
+    min-width: 20em;
+
+    #input-search {
+      width: 100%;
+    }
+  }
+
+  #search-output {
+    opacity: 0;
+  }
+
+  li.node-selected {
+    color:#FFFFFF;
+    background-color: $brand-primary;
+
+    span {
+      color: #FFFFFF;
+    }
+  }
+}
+
+#tree-selected {
+  border: 0;
+}

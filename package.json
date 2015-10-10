@@ -24,10 +24,30 @@
     "test": "grunt init"
   },
   "devDependencies": {
+    "autosize": "^3.0.13",
+    "babelify": "^6.3.0",
+    "bootstrap-sass": "^3.3.5",
+    "browserify": "^11.2.0",
+    "browserify-shim": "^3.8.10",
+    "grunt-bootlint": "^0.9.1",
     "grunt-browserify": "^4.0.1",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-gh-pages": "^0.9.1",
     "jquery": "^2.1.4"
+  },
+  "browserify-shim": {
+    "jquery": "global:$"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      [
+        "babelify",
+        {
+          "stage": 0
+        }
+      ]
+    ]
   },
   "repository": {
     "type": "git",

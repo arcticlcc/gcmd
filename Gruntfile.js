@@ -141,7 +141,7 @@ module.exports = function(grunt) {
 
                 jshintrc : '.jshintrc', // Defined options and globals.
                 ignores: [
-                    './lib/modules.js'
+                    './lib/bundle.js'
                 ]
 
             },
@@ -224,20 +224,8 @@ module.exports = function(grunt) {
                 files : {
 
                     './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/<%= pkg.name %>.min.js' : [
-                        //'./files/scripts/jquery.js',
-                        //'./files/scripts/jquery.*.js',
-                        './bower_components/uri.js/src/URI.js',
-                        //'./lib/uri.js/jquery.URI.js',
-                        './bower_components/tv4/tv4.js',
-                        './bower_components/json-schema-viewer/lib/tv4.async-load-jquery.js',
-                        './bower_components/jquery.scrollTo/jquery.scrollTo.js',
-                        './bower_components/d3/d3.js',
-                        './bower_components/filereader.js/filereader.js',
-                        './bower_components/jsonpointer.js/src/jsonpointer.js',
-                        './bower_components/highlightjs/highlight.pack.js',
-                        './bower_components/json-schema-viewer/json-schema-viewer.js',
-                        './lib/modules.js',
-                        './lib/translator.js',
+                        'bower_components/bootstrap-treeview/src/js/bootstrap-treeview.js',
+                        './lib/bundle.js',
                     ],
 
                 },
@@ -405,22 +393,12 @@ module.exports = function(grunt) {
                     {
 
                         expand : true,
-                        cwd : './bower_components/mdjson-schemas/',
+                        cwd : './',
                         src : [
-                            '**/*.json',
-                            '!*bower.json',
+                            'assets/**/*',
+                            '!assets/gcmd.json',
                         ],
-                        dest : './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/schemas',
-
-                    },
-                    {
-
-                        expand : true,
-                        cwd : './bower_components/json-schema-viewer/lib/',
-                        src : [
-                            'preinit.js',
-                        ],
-                        dest : './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/lib',
+                        dest : './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/',
 
                     },
                     {
@@ -480,8 +458,21 @@ module.exports = function(grunt) {
             debug: true
           },
           src: 'lib/main.js',
-          dest: 'lib/modules.js'
+          dest: 'lib/bundle.js'
         }
+      },
+
+      /**
+       * Bootstrap linter.
+       *
+       * @see https://github.com/twbs/grunt-bootlint
+       */
+      bootlint: {
+        options: {
+          stoponerror: false,
+          relaxerror: []
+        },
+        files: ['./templates/index.html']
       },
 
     });
@@ -511,6 +502,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.loadNpmTasks('grunt-browserify');
+
+    grunt.loadNpmTasks('grunt-bootlint');
     //----------------------------------
 
     /**
@@ -522,7 +515,7 @@ module.exports = function(grunt) {
 
     //----------------------------------
 
-    grunt.registerTask('init', ['jshint',]);
+    grunt.registerTask('init', ['jshint', 'bootlint']);
 
     grunt.registerTask('dev', ['init', 'env:dev', 'browserify', 'sass:dev', 'preprocess:dev',]);
 

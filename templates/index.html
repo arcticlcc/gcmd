@@ -2,16 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
-        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-        Remove this if you use the .htaccess -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-        <title>index</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Joshua Bradley">
-
-        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <title>GCMD Keyword Viewer <!-- @echo version --></title>
+        <link rel="stylesheet" href="styles/gcmd<!-- @if NODE_ENV='PRODUCTION' -->.min<!-- @endif -->.css" />
 
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
         <link rel="shortcut icon" href="/favicon.ico">
@@ -19,29 +15,150 @@
     </head>
 
     <body>
-        <div>
-            <header>
-                <h1>index</h1>
-            </header>
-            <nav>
-                <p>
-                    <a href="/">Home</a>
-                </p>
-                <p>
-                    <a href="/contact">Contact</a>
-                </p>
-            </nav>
-
-            <div>
-
+        <div id="loader">
+            <div id="loading">
+                <div>
+                </div>
+                <div>
+                </div>
             </div>
-
-            <footer>
-                <p>
-                    &copy; Copyright  by Joshua Bradley
-                </p>
-            </footer>
+            <h3>Loading <span class="text-primary">Keywords</span>...might take a few seconds ;)</h3>
         </div>
-        <script type="text/javascript" src="../lib/modules.js"></script>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">GCMD Keyword Viewer</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                        </li>
+                        <li>
+                            <a href="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="home" class="page-header">
+                        <h1> GCMD Keywords <small class="hidden-xs">Grab and paste 'em</small></h1>
+                    </div>
+                    <div class="start">
+                        <p class="lead">
+                            Click to select keywords.
+                            They'll be placed in the textarea.
+                            Click again to remove.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="tabbable" id="tree-tabs">
+                        <ul class="nav nav-tabs">
+                            <li  role="presentation" class="active">
+                                <a href="#tree" aria-controls="tree" role="tab" data-toggle="tab">Tree</a>
+                            </li>
+                            <li  role="presentation">
+                                <a href="#panel-search" aria-controls="search" role="tab" data-toggle="tab">Search</a>
+                            </li>
+                            <button type="button" id="btn-clear" class="btn btn-danger pull-right" aria-label="Clear Selectiom">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear
+                            </button>
+                        </ul>
+                        <div class="tab-content">
+                            <div  role="tabpanel" class="tab-pane active" id="tree">
+                            </div>
+                            <div  role="tabpanel" class="tab-pane panel panel-default"  id="panel-search">
+                                <div class="form-inline">
+                                    <!-- <form> -->
+                                    <div class="form-group search-grp">
+                                        <label for="input-search" class="sr-only">Search Tree:</label>
+                                        <input type="input" class="form-control" id="input-search" placeholder="Type to search..." value="">
+                                    </div>
+                                    <div class="form-group chk-grp">
+                                        <div class="checkbox">
+                                            <label  data-toggle="tooltip" title="Show results in the tree(slower).">
+                                                <input type="checkbox" id="chk-reveal-results" value="false">
+                                                Reveal Results </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="chk-exact-match" value="false">
+                                                Exact Match </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success btn-md" id="btn-search">
+                                            Search
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-md" id="btn-clear-search">
+                                            Clear
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- </form> -->
+                                <div id="search-output" class="treeview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Selected Keywords</h3>
+                        </div>
+                        <div class="">
+                            <textarea id="tree-selected" class="form-control" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="about" class="well">
+                        <h2> About GCMD Keywords</h2>
+                        <p>
+                            This keyword list is based on the
+                            GCMD/IDN Science Keywords Version 8.1 Released
+                            2015-03-26. GCMD keywords are useful both for metadata
+                            and facilitating data discovery.
+                        </p>
+                        <h3>Citation:</h3>
+                        <p>
+                            <i>Global Change Master Directory (GCMD).
+                            2015. GCMD Keywords, Version 8.1.
+                            Greenbelt, MD: Global Change Data Center,
+                            Science and Exploration Directorate,
+                            Goddard Space Flight Center (GSFC)
+                            National Aeronautics and Space
+                            Administration (NASA).
+                            URL:<a href="http://gcmd.nasa.gov/learn/keywords.html"> <em>http://gcmd.nasa.gov/learn/keywords.html</em></a> </i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- @if NODE_ENV!='PRODUCTION' -->
+        <script type="text/javascript" src="lib/bundle.js"></script>
+        <!-- @endif -->
+        <!-- @if NODE_ENV='PRODUCTION' -->
+        <script type='text/javascript' src="gcmd.min.js"></script>
+        <!-- @endif -->
     </body>
 </html>
