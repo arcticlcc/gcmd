@@ -28,6 +28,10 @@ body {
   span.icon.expand-icon:hover {
     color: darken(saturate($brand-warning, 4), 2);
   }
+
+  li .badge {
+    background-color: $brand-primary;
+  }
 }
 
 #panel-search {
