@@ -397,6 +397,17 @@ module.exports = function(grunt) {
                         src : [
                             'assets/**/*',
                             '!assets/gcmd.json',
+                            '!assets/favicon/**',
+                        ],
+                        dest : './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/',
+
+                    },
+                    {
+
+                        expand : true,
+                        cwd : './assets/favicon',
+                        src : [
+                            '**/*',
                         ],
                         dest : './prod/<%= pkg.version %>/<%= now %>/<%= ver %>/',
 

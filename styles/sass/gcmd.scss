@@ -1,14 +1,35 @@
 @import 'loader';
 
-$icon-font-path: "../assets/fonts/bootstrap/" !default;
+$icon-font-path: "../assets/fonts/gcmd/" !default;
 $brand-primary: adjust_hue(darken(#428bca, 6), 253) !default;
 
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/theme";
 //@import 'logo';
+@import 'fonts';
+
+html {
+  height: 100vh;
+}
+html, body {
+  min-height: 99.9vh;
+}
 
 body {
   padding-top: 50px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar-fixed-top a {
+  font-size: 1.2em;
 }
 
 #about {
@@ -32,6 +53,11 @@ body {
   li .badge {
     background-color: $brand-primary;
   }
+
+}
+
+.node-tooltip {
+  min-width: 15em;
 }
 
 #panel-search {
@@ -73,6 +99,26 @@ body {
   }
 }
 
+#panel-selected {
+
+  h3.panel-title{
+    display: inline-block;
+  }
+
+  .checkbox {
+    margin: 0;
+  }
+}
+
 #tree-selected {
   border: 0;
+}
+
+#about {
+  background-color: #F5FAFF;
+  border: 1px solid #E0F0FF;
+
+  .citation {
+    padding-left: 1em;
+  }
 }

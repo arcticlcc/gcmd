@@ -18,9 +18,11 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "~3.3.5",
+    "bootstrap-treeview": "https://github.com/jlblcc/bootstrap-treeview.git#master"
   },
-  "devDependencies": {
-    "bootstrap-treeview": "https://github.com/jlblcc/bootstrap-treeview.git"
+  "devDependencies": {},
+  "resolutions": {
+    "bootstrap-treeview": "master"
   }
 }

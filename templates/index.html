@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="styles/gcmd<!-- @if NODE_ENV='PRODUCTION' -->.min<!-- @endif -->.css" />
 
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-        <link rel="shortcut icon" href="/favicon.ico">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
     </head>
 
     <body>
@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">GCMD Keyword Viewer</a>
+                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> GCMD Keyword Viewer</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -41,7 +41,12 @@
                             <a href="#home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
                         </li>
                         <li>
-                            <a href="#about"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a>
+                            <a href="#about"><span class="glyphicon glyphicon-info-circle" aria-hidden="true"></span> About</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="https://github.com/arcticlcc/gcmd"><span class="glyphicon glyphicon-github" aria-hidden="true"></span> GitHub</a>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -117,9 +122,14 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="panel panel-primary">
+                    <div id="panel-selected" class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Selected Keywords</h3>
+                            <div class="checkbox pull-right">
+                                <label  data-toggle="tooltip" title="Include the full keyword path?" class="noselect">
+                                    <input type="checkbox" id="chk-fullpath" value="true" checked="">
+                                    Full Path</label>
+                            </div>
                         </div>
                         <div class="">
                             <textarea id="tree-selected" class="form-control" rows="10"></textarea>
@@ -129,16 +139,36 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div id="about" class="well">
-                        <h2> About GCMD Keywords</h2>
+                        <h3><span class="glyphicon glyphicon-snowflake" aria-hidden="true"></span> About the GCMD Keyword Viewer</h3>
+                        <p>
+                            The <a href="http://arcticlcc.org">Arctic Landscape
+                            Conservation Cooperative</a> developed this application
+                            to assist in the use of
+                            <abbr title="Global Change Master Directory">GCMD</abbr> keywords.
+                            GCMD keywords are very useful for metadata
+                            and facilitating data discovery. However, finding
+                            and choosing specific keywords can be difficult due
+                            to the size of the list. This viewer is intended to
+                            provide an easy way to explore and use the GCMD
+                            keyword list.
+                        </p>
+                        <hr />
+                        <h3><span class="glyphicon glyphicon-rocket" aria-hidden="true"></span> About NASA’s GCMD Keywords</h3>
                         <p>
                             This keyword list is based on the
                             GCMD/IDN Science Keywords Version 8.1 Released
-                            2015-03-26. GCMD keywords are useful both for metadata
-                            and facilitating data discovery.
+                            2015-03-26. The the keyword lists are maintained by the
+                            <abbr title="Global Change Master Directory">GCMD</abbr>
+                            science team.
                         </p>
-                        <h3>Citation:</h3>
-                        <p>
+                        <h4>Citation:</h4>
+                        <p class="citation">
                             <i>Global Change Master Directory (GCMD).
                             2015. GCMD Keywords, Version 8.1.
                             Greenbelt, MD: Global Change Data Center,
