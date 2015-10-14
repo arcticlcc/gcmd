@@ -2,11 +2,10 @@ GCMD Keyword Viewer
 ==================
 
 Application for visualizing [NASA's Global Change Master Directory (GCMD) Keyword lists](http://gcmd.nasa.gov/learn/keywords.html), in particular the science keywords.
+
 ### About the GCMD Keyword Viewer
 
 The [Arctic Landscape Conservation Cooperative](http://arcticlcc.org) developed this application to assist in the use of GCMD keywords. GCMD keywords are very useful for metadata and facilitating data discovery. However, finding and choosing specific keywords can be difficult due to the size of the list. This viewer is intended to provide an easy way to explore and use the GCMD keyword list.
-
-* * *
 
 ### About NASA’s GCMD Keywords
 
@@ -16,7 +15,7 @@ This keyword list is based on the GCMD/IDN Science Keywords Version 8.1 Released
 
 *Global Change Master Directory (GCMD). 2015. GCMD Keywords, Version 8.1. Greenbelt, MD: Global Change Data Center, Science and Exploration Directorate, Goddard Space Flight Center (GSFC) National Aeronautics and Space Administration (NASA). URL: [http://gcmd.nasa.gov/learn/keywords.html_](http://gcmd.nasa.gov/learn/keywords.html)*
 
-Built using:
+### Built using:
  - [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
  - [bootstrap-treeview](https://github.com/jonmiles/bootstrap-treeview)
  - [jQuery](http://jquery.com/)
