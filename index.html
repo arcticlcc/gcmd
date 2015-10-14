@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Joshua Bradley">
-        <title>GCMD Keyword Viewer 0.1.0</title>
+        <title>GCMD Keyword Viewer 0.2.0</title>
         <link rel="stylesheet" href="styles/gcmd.min.css" />
 
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
@@ -17,10 +17,8 @@
     <body>
         <div id="loader">
             <div id="loading">
-                <div>
-                </div>
-                <div>
-                </div>
+                <div></div>
+                <div></div>
             </div>
             <h3>Loading <span class="text-primary">Keywords</span>...might take a few seconds ;)</h3>
         </div>
@@ -83,8 +81,7 @@
                             </button>
                         </ul>
                         <div class="tab-content">
-                            <div  role="tabpanel" class="tab-pane active" id="tree">
-                            </div>
+                            <div  role="tabpanel" class="tab-pane active" id="tree"></div>
                             <div  role="tabpanel" class="tab-pane panel panel-default"  id="panel-search">
                                 <div class="form-inline">
                                     <!-- <form> -->
@@ -115,21 +112,39 @@
                                     </div>
                                 </div>
                                 <!-- </form> -->
-                                <div id="search-output" class="treeview">
-                                </div>
+                                <div id="search-output" class="treeview"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div id="panel-selected" class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Selected Keywords</h3>
+                        <div class="panel-heading clearfix">
+                            <h3 class="panel-title pull-left">Selected Keywords</h3>
                             <div class="checkbox pull-right">
                                 <label  data-toggle="tooltip" title="Include the full keyword path?" class="noselect">
                                     <input type="checkbox" id="chk-fullpath" value="true" checked="">
                                     Full Path</label>
                             </div>
+                            <div id="input-delimiter" class="input-group input-group-sm pull-right" data-toggle="tooltip" data-placement="top auto" title="Select or type the delimeter for the keywords. Default = Newline." data-container="body">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Delim <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#" data-value="\n">Newline</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-value=",">Comma</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-value="|">Pipe</a>
+                                        </li>
+                                    </ul>
+                                </div><!-- /btn-group -->
+                                <input type="text" class="form-control" aria-label="Delimiter" maxlength="2">
+                            </div><!-- /input-group -->
                         </div>
                         <div class="">
                             <textarea id="tree-selected" class="form-control" rows="10"></textarea>
